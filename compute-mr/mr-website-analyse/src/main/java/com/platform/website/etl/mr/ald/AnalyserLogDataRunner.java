@@ -1,10 +1,9 @@
 package com.platform.website.etl.mr.ald;
 
-import com.platform.website.common.EventLogConstants;
-import com.platform.website.common.GlobalConstants;
-import com.platform.website.util.TimeUtil;
 import java.io.IOException;
-
+import com.platform.website.common.*;
+import com.platform.website.common.EventLogConstants;
+import com.platform.website.util.TimeUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -98,7 +97,7 @@ public class AnalyserLogDataRunner implements Tool {
 
   @Override
   public Configuration getConf() {
-    return this.conf;
+    return conf;
   }
 
   public void setJobInputPaths(Job job) {

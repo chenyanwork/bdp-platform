@@ -1,7 +1,7 @@
 package com.platform.website.etl.mr.ald;
 
-import com.platform.website.common.EventLogConstants;
-import com.platform.website.util.LoggerUtil;
+import com.platform.website.common.*;
+import com.platform.website.util.*;
 import java.io.IOException;
 import java.util.Map;
 import java.util.zip.CRC32;
@@ -25,7 +25,7 @@ public class AnalyserLogDataMapper extends Mapper<Object, Text, NullWritable, Pu
   @Override
   protected void map(Object key, Text value, Context context) {
     this.inputRecords++;
-    this.logger.debug("Analyse data of :" + value);
+    logger.debug("Analyse data of :" + value);
 
     try {
       //解析日志
@@ -47,15 +47,15 @@ public class AnalyserLogDataMapper extends Mapper<Object, Text, NullWritable, Pu
         case CHARGEREFUND:
         case EVENT:
           this.outputRecords++;
-          this.handleData(clientInfo, event, context);
+          handleData(clientInfo, event, context);
           break;
         default:
           this.filterRecords++;
-          this.logger.warn("该事件无法解析,事件名称为:" + eventAliasName);
+          logger.warn("该事件无法解析,事件名称为:" + eventAliasName);
       }
 
     } catch (Exception e) {
-      this.logger.error("处理数据发出异常,数据: " + value, e);
+      logger.error("处理数据发出异常,数据: " + value, e);
     }
   }
 

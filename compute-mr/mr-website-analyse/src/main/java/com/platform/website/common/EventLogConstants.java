@@ -6,7 +6,7 @@ package com.platform.website.common;
  */
 public class EventLogConstants {
 
-  public static enum EventEnum {
+  public  enum EventEnum {
     LAUNCH(1, "lauch event", "e_l"),
     PAGEVIEW(2, "page view event", "e_pv"),
     CHARGEREQUEST(3, "charge request event", "e_crt"),
